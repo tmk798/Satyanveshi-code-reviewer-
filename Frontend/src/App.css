@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400;700&display=swap');
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, 
+body, 
+#root {
+  height: 100%;
+  width: 100%;
+  background-color: #000000;
+  font-family: 'Share Tech Mono', monospace;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER SECTION ===== */
+.hero {
+  height: 100px;
+  text-align: center;
+  padding: 1.2rem 1rem 0.5rem;
+  background-color: #000000;
+  border-bottom: 1px solid #001a00;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00ff00;
+  text-shadow: 
+    0 0 3px #00ff00,
+    0 0 6px #00ff0050;
+  letter-spacing: 0.5px;
+}
+
+.satya {
+  color: #00ffaa;
+  text-shadow: 
+    0 0 2px #00ffaa,
+    0 0 4px #00ffaa50;
+}
+
+.tagline {
+  font-size: 0.95rem;
+  color: #00cc66;
+  text-shadow: 
+    0 0 1px #00ff00,
+    0 0 3px #00ff0030;
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+/* ===== MAIN CONTAINER ===== */
+main {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ===== LEFT PANEL (HACKER THEME) ===== */
+.left {
+  flex-basis: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, #000000, #001100);
+  position: relative;
+  border-radius: 0.7rem;
+  border: 2px solid #00ff00;
+  overflow: hidden;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.3),
+    inset 0 0 20px rgba(0, 255, 0, 0.1);
+  animation: hackerGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes hackerGlow {
+  0% { box-shadow: 0 0 20px rgba(0, 255, 0, 0.3), inset 0 0 20px rgba(0, 255, 0, 0.1); }
+  100% { box-shadow: 0 0 30px rgba(0, 255, 0, 0.5), inset 0 0 30px rgba(0, 255, 0, 0.2); }
+}
+
+.left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  animation: scanLine 2s linear infinite;
+  z-index: 1;
+}
+
+@keyframes scanLine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.left .code,
+.code pre,
+.code pre code {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  background: linear-gradient(135deg, #000800, #001400);
+  color: #00ff41;
+  overflow-y: auto;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  border: none;
+  outline: none;
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+  position: relative;
+  z-index: 2;
+}
+
+.code pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* Matrix-style text effects */
+.left .code::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 65, 0.03) 2px,
+      rgba(0, 255, 65, 0.03) 4px
+    );
+  pointer-events: none;
+}
+
+/* Hacker scrollbar styling */
+.left .code::-webkit-scrollbar,
+.code pre::-webkit-scrollbar {
+  width: 10px;
+}
+
+.left .code::-webkit-scrollbar-track,
+.code pre::-webkit-scrollbar-track {
+  background: #000000;
+  border: 1px solid #00ff00;
+  border-radius: 5px;
+}
+
+.left .code::-webkit-scrollbar-thumb,
+.code pre::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ff00, #00aa00);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.left .code::-webkit-scrollbar-thumb:hover,
+.code pre::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #00ff41, #00cc00);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+}
+
+/* Hacker Review Button */
+.left .review {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, #00ff00, #00aa00);
+  color: #000000;
+  padding: 0.5rem 2rem;
+  font-weight: 700;
+  font-family: 'Share Tech Mono', monospace;
+  cursor: pointer;
+  user-select: none;
+  border: 2px solid #00ff41;
+  border-radius: 0.7rem;
+  box-shadow: 
+    0 0 15px rgba(0, 255, 0, 0.5),
+    inset 0 0 10px rgba(0, 255, 0, 0.2);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  z-index: 10;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.left .review:hover {
+  background: linear-gradient(135deg, #00ff41, #00cc00);
+  box-shadow: 
+    0 0 25px rgba(0, 255, 0, 0.7),
+    inset 0 0 15px rgba(0, 255, 0, 0.3);
+  transform: translateY(-2px);
+  border-color: #00ff00;
+}
+
+.left .review:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 0 15px rgba(0, 255, 0, 0.5),
+    inset 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+/* ===== RIGHT PANEL (IRON MAN THEME) ===== */
+.right {
+  flex-basis: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a0e0e, #2d1a1a, #1a0e0e);
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  overflow: auto;
+  color: #ffffff;
+  line-height: 1.6;
+  word-wrap: break-word;
+  border-radius: 0.7rem;
+  border: 2px solid #ff6b00;
+  box-shadow: 
+    0 0 20px rgba(255, 107, 0, 0.4),
+    inset 0 0 20px rgba(255, 107, 0, 0.1);
+  animation: ironmanGlow 4s ease-in-out infinite alternate;
+  position: relative;
+}
+
+@keyframes ironmanGlow {
+  0% { 
+    box-shadow: 
+      0 0 20px rgba(255, 107, 0, 0.4),
+      inset 0 0 20px rgba(255, 107, 0, 0.1);
+  }
+  100% { 
+    box-shadow: 
+      0 0 35px rgba(255, 107, 0, 0.6),
+      inset 0 0 30px rgba(255, 107, 0, 0.2);
+  }
+}
+
+.right::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(255, 107, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+    linear-gradient(45deg, transparent 49%, rgba(255, 107, 0, 0.02) 50%, transparent 51%);
+  border-radius: 0.7rem;
+  pointer-events: none;
+}
+
+.right h1,
+.right h2,
+.right h3 {
+  color: #ff6b00;
+  text-shadow: 
+    0 0 5px rgba(255, 107, 0, 0.8),
+    0 0 10px rgba(255, 107, 0, 0.4);
+  margin: 1rem 0 0.5rem 0;
+  font-weight: 700;
+  position: relative;
+}
+
+.right h1::after,
+.right h2::after,
+.right h3::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6b00, #ff0000);
+  box-shadow: 0 0 5px rgba(255, 107, 0, 0.5);
+}
+
+.right h1 {
+  font-size: 1.8rem;
+}
+
+.right h2 {
+  font-size: 1.5rem;
+}
+
+.right h3 {
+  font-size: 1.3rem;
+}
+
+.right p {
+  margin-bottom: 1rem;
+  text-shadow: 0 0 2px rgba(255, 107, 0, 0.1);
+}
+
+.right code,
+.right pre {
+  background: linear-gradient(135deg, #2d1100, #1a0800);
+  color: #ffaa00;
+  padding: 1rem;
+  border-left: 4px solid #ff6b00;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-size: 1.1rem;
+  font-family: 'Share Tech Mono', monospace;
+  margin: 1rem 0;
+  box-shadow: 
+    inset 0 0 10px rgba(255, 107, 0, 0.2),
+    0 0 10px rgba(255, 107, 0, 0.1);
+  border: 1px solid #ff6b00;
+  text-shadow: 0 0 3px rgba(255, 170, 0, 0.5);
+}
+
+.right code {
+  display: inline-block;
+  padding: 0.2rem 0.4rem;
+  margin: 0 0.2rem;
+  font-size: 1rem;
+  border-left: none;
+  border-radius: 3px;
+  background: rgba(255, 107, 0, 0.1);
+  border: 1px solid rgba(255, 107, 0, 0.3);
+}
+
+/* Iron Man scrollbar styling */
+.right::-webkit-scrollbar {
+  width: 12px;
+}
+
+.right::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #1a0e0e, #2d1a1a);
+  border-radius: 6px;
+  border: 1px solid #ff6b00;
+}
+
+.right::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff6b00, #ff0000);
+  border-radius: 6px;
+  box-shadow: 
+    0 0 10px rgba(255, 107, 0, 0.5),
+    inset 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.right::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff8800, #ff3300);
+  box-shadow: 
+    0 0 15px rgba(255, 107, 0, 0.7),
+    inset 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  height: 60px;
+  background-color: #000000;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #00ffaa;
+  border-top: 1px solid #00ffaa;
+  line-height: 60px;
+  text-shadow: 
+    0 0 3px #00ffaa,
+    0 0 6px #00ffaa30;
+  font-weight: 400;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .left,
+  .right {
+    flex-basis: auto;
+    height: 50vh;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .tagline {
+    font-size: 0.8rem;
+  }
+  
+  .right {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+  
+  .hero {
+    height: 80px;
+    padding: 1rem;
+  }
+  
+  .footer {
+    height: 50px;
+    line-height: 50px;
+    font-size: 0.8rem;
+  }
+  
+  /* Reduce animations on mobile */
+  .left {
+    animation: none;
+  }
+  
+  .right {
+    animation: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main {
+    padding: 0.5rem;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+  }
+  
+  .tagline {
+    font-size: 0.75rem;
+  }
+  
+  .right {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+  
+  .left .review {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    padding: 0.4rem 1.5rem;
+    font-size: 0.8rem;
+  }
+  
+  /* Disable animations on small screens */
+  .left,
+  .right {
+    animation: none;
+  }
+  
+  .left::before {
+    display: none;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+.review:focus {
+  outline: 2px solid #00ff00;
+  outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .left .review {
+    transition: none;
+  }
+  
+  .left .review:hover {
+    transform: none;
+  }
+  
+  .left .review:active {
+    transform: none;
+  }
+  
+  .left,
+  .right {
+    animation: none;
+  }
+  
+  .left::before {
+    animation: none;
+  }
+}
